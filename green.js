@@ -17,7 +17,7 @@ cardBtn.innerHTML=`
                         <img src="${cardName.image}" alt=""class="h-50 w-full object-cover">
                     </div>
                     <div class="space-y-3">
-                        <h3 id="card-title" class="font-semibold text-[20px]">${cardName.name}</h3>
+                        <button onclick="my_modal_5.showModal()"" id="card-title" class="font-semibold text-[20px] cursor-pointer">${cardName.name} </button>
                         <p id="card-p" class="text-[#4e5661] h-40">${cardName.description}</p>
                           <div class="flex justify-between">
                         <div>
@@ -84,7 +84,7 @@ cardContenar.innerHTML="";
                         <img src="${plant.image}" alt=""class="h-50 w-full object-cover">
                     </div>
                     <div class="space-y-3">
-                        <h3 id="card-title" class="font-semibold text-[20px]">${plant.name}</h3>
+                         <button onclick="my_modal_5.showModal()"" id="card-title" class="font-semibold text-[20px] cursor-pointer">${plant.name} </button>
                         <p id="card-p" class="text-[#4e5661] h-40">${plant.description}</p>
                           <div class="flex justify-between">
                         <div>
@@ -107,8 +107,16 @@ cardContenar.innerHTML="";
     }
 }
 
+const showModal=()=>{
+   const url = `https://openapi.programming-hero.com/api/category/${id}`
+   fetch(url)
+   .then((res)=> res.json())
+   .then((lode)=>displayPlantsByCatagores(lode.plants))
+}
+
 
 
 catagorySection()
 allPlantSection()
 lodeCurdSection()
+lodeDetales()

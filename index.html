@@ -53,7 +53,7 @@
                     
                 </div>
             </section>
-            <section id="card-section" class="grid grid-cols-1 gap-4  md:grid-cols-3 grid-rows-2 md:pl-10 md:pr-5">
+            <section id="card-section" class="grid grid-cols-1 gap-4  md:grid-cols-3 md:pl-10 md:pr-5">
 
             </section>
             <section class="w-full bg-white p-3 md:p-1 md:w-[60%] ">
@@ -149,6 +149,31 @@
     <footer class="bg-[#14532D] py-3">
         <p class="text-white text-center">© 2025 Green Earth. All Rights Reserved.</p>
     </footer>
+
+    <!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+             <div class="card-section space-y-3 p-5 bg-white h-[250px] w-[200px]">
+                <h1 class="text-2xl font-semibold">asif</h1>
+                <div>
+                    <img src="./assets/game5.jpg" alt="" class="h-40 w-full object-cover" >
+                </div>
+                <div>
+                    <h2 class="text-[20px] font-semibold">Category: <span></span></h2>
+                    <h3 class="text-[20px] font-semibold">Price: <span></span></h3>
+                    <h2 class="text-[20px] font-semibold"> Description: <span></span></h2>
+                </div>
+
+            </div>
+        <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+        </div>
+  </div>
+</dialog>
 
     <script src="./green.js"></script>
 </body>
