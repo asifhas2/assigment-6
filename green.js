@@ -57,7 +57,7 @@ for(let catagoresName of catagores){
 
     const btn = document.createElement("div")
     btn.innerHTML=`
-          <button class="catagorie-p font-medium text[20px]">${catagoresName.category_name}</button>
+          <button onclick="lodeCurdSection(${catagoresName.id})" class=" font-medium text[20px] btn btn-neutral btn-outline w-full hover:bg-[#15803D] ">${catagoresName.category_name}</button>
     
     `;
     catagoryContenar.append(btn)
@@ -65,5 +65,50 @@ for(let catagoresName of catagores){
 
 }
 
+const lodeCurdSection=(id)=>{
+   const url = `https://openapi.programming-hero.com/api/category/${id}`
+   fetch(url)
+   .then((res)=> res.json())
+   .then((lode)=>displayPlantsByCatagores(lode.plants))
+}
+
+const displayPlantsByCatagores = (plants)=>{
+    const cardContenar = document.getElementById("card-section")
+cardContenar.innerHTML="";
+
+    for(let plant of plants){
+       const catagoryBtn = document.createElement("div")
+       catagoryBtn.innerHTML=`
+        <div class="card-section space-y-3 p-5 bg-white h-[550px]">
+                    <div id="card-imd ">
+                        <img src="${plant.image}" alt=""class="h-50 w-full object-cover">
+                    </div>
+                    <div class="space-y-3">
+                        <h3 id="card-title" class="font-semibold text-[20px]">${plant.name}</h3>
+                        <p id="card-p" class="text-[#4e5661] h-40">${plant.description}</p>
+                          <div class="flex justify-between">
+                        <div>
+                            <button id="card-catagori" class="bg-[#DCFCE7] text-[#15803D] font-semibold px-4 py-1 rounded-3xl">${plant.category}</button>
+                        </div>
+                        <div>
+                            <p id="card-price" class="text-[20px] font-bold">$ <span>${plant.price}</span> </p>
+                        </div>
+                    </div>
+                    </div>
+                  
+                    <div class="">
+                        <button id="add-to-cart-btn" class="text-[20px] font-medium text-white bg-[#15803D] w-full py-2 rounded-3xl  ">Add to Cart</button>
+                    </div>
+
+                </div>
+       
+       `;
+       cardContenar.append(catagoryBtn)
+    }
+}
+
+
+
 catagorySection()
 allPlantSection()
+lodeCurdSection()
