@@ -17,7 +17,7 @@ cardBtn.innerHTML=`
                         <img src="${cardName.image}" alt=""class="h-50 w-full object-cover">
                     </div>
                     <div class="space-y-3">
-                        <button onclick="my_modal_5.showModal()"" id="card-title" class="font-semibold text-[20px] cursor-pointer">${cardName.name} </button>
+                        <button onclick="my_modal_5.showModal();lodeFunction(${catagoresName.id})"" id="card-title" class="font-semibold text-[20px] cursor-pointer">${cardName.name} </button>
                         <p id="card-p" class="text-[#4e5661] h-40">${cardName.description}</p>
                           <div class="flex justify-between">
                         <div>
@@ -84,7 +84,7 @@ cardContenar.innerHTML="";
                         <img src="${plant.image}" alt=""class="h-50 w-full object-cover">
                     </div>
                     <div class="space-y-3">
-                         <button onclick="my_modal_5.showModal()"" id="card-title" class="font-semibold text-[20px] cursor-pointer">${plant.name} </button>
+                         <button onclick="my_modal_5.showModal();lodeFunction(${plant.id})  "" id="card-title" class="font-semibold text-[20px] cursor-pointer">${plant.name} </button>
                         <p id="card-p" class="text-[#4e5661] h-40">${plant.description}</p>
                           <div class="flex justify-between">
                         <div>
@@ -107,11 +107,41 @@ cardContenar.innerHTML="";
     }
 }
 
-const showModal=()=>{
-   const url = `https://openapi.programming-hero.com/api/category/${id}`
+const lodeFunction=(id)=>{
+   const url = `https://openapi.programming-hero.com/api/plant/${id}`
    fetch(url)
    .then((res)=> res.json())
-   .then((lode)=>displayPlantsByCatagores(lode.plants))
+   .then((lode)=>displayLodeFunction(lode.plants))
+}
+
+const displayLodeFunction=(detales)=>{
+const curdContenar = document.getElementById("modal-btn")
+curdContenar.innerHTML="";
+const curtdbtn = document.createElement("div")
+curtdbtn.innerHTML=`
+            <div class="card-section space-y-3 p-2 bg-white w-full">
+                <h3 class="text-2xl font-semibold">${detales.name}</h3>
+                <div>
+                    <img src="${detales.image}" alt="" class=" w-full h-[300px] object-cover" >
+                </div>
+                <div>
+                    <h2 class="text-[20px] font-semibold w-full">Category: <span class="text-[#4e5661] text-[16px]">${detales.category}</span></h2>
+                    <h3 class="text-[20px] font-semibold">Price: <span class="text-[#4e5661] text-[16px]" >${detales.price}</span></h3>
+                    <h2 class="text-[20px] font-semibold"> Description: <span class="text-[#4e5661] text-[16px]">${detales.description}</span></h2>
+                </div>
+
+            </div>
+             <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+        </div>
+
+`
+curdContenar.append(curtdbtn)
+
+
 }
 
 
@@ -119,4 +149,4 @@ const showModal=()=>{
 catagorySection()
 allPlantSection()
 lodeCurdSection()
-lodeDetales()
+lodeFunction()
