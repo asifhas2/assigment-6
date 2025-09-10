@@ -17,7 +17,7 @@ cardBtn.innerHTML=`
                         <img src="${cardName.image}" alt=""class="h-50 w-full object-cover">
                     </div>
                     <div class="space-y-3">
-                        <button onclick="my_modal_5.showModal();lodeFunction(${cardName.id})"" id="card-title" class="font-semibold text-[20px] cursor-pointer">${cardName.name} </button>
+                        <button id="${cardName.id}" onclick="my_modal_5.showModal();lodeFunction(${cardName.id})"" id="card-title" class="font-semibold text-[20px] cursor-pointer">${cardName.name} </button>
                         <p id="card-p" class="text-[#4e5661] h-40">${cardName.description}</p>
                           <div class="flex justify-between">
                         <div>
@@ -84,7 +84,7 @@ cardContenar.innerHTML="";
                         <img src="${plant.image}" alt=""class="h-50 w-full object-cover">
                     </div>
                     <div class="space-y-3">
-                         <button onclick="my_modal_5.showModal();lodeFunction(${plant.id})  "" id="card-title" class="font-semibold text-[20px] cursor-pointer">${plant.name} </button>
+                         <button id="${plant.id}" onclick="my_modal_5.showModal();lodeFunction(${plant.id})  "" id="card-title" class="font-semibold text-[20px] cursor-pointer">${plant.name} </button>
                              <p id="card-p" class="text-[#4e5661] h-40">${plant.description}</p>
                         <div class="flex justify-between">
                             <div>
@@ -143,6 +143,18 @@ curdContenar.append(curtdbtn)
 
 
 }
+
+// chalange part //////////////////
+
+const cardSection = document.getElementById("card-section")
+
+cardSection.addEventListener('click',(e)=> {
+    if(e.target.innerText === 'Add to Cart'){
+       const title = e.target.parentNode.parentNode.children[1].children[0].innerText;
+       const id = e.target.parentNode.parentNode.children[1].children[0].id
+       console.log(id)
+    }
+})
 
 
 
