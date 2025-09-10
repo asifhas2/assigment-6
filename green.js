@@ -17,7 +17,7 @@ cardBtn.innerHTML=`
                         <img src="${cardName.image}" alt=""class="h-50 w-full object-cover">
                     </div>
                     <div class="space-y-3">
-                        <button onclick="my_modal_5.showModal();lodeFunction(${catagoresName.id})"" id="card-title" class="font-semibold text-[20px] cursor-pointer">${cardName.name} </button>
+                        <button onclick="my_modal_5.showModal();lodeFunction(${cardName.id})"" id="card-title" class="font-semibold text-[20px] cursor-pointer">${cardName.name} </button>
                         <p id="card-p" class="text-[#4e5661] h-40">${cardName.description}</p>
                           <div class="flex justify-between">
                         <div>
@@ -85,15 +85,15 @@ cardContenar.innerHTML="";
                     </div>
                     <div class="space-y-3">
                          <button onclick="my_modal_5.showModal();lodeFunction(${plant.id})  "" id="card-title" class="font-semibold text-[20px] cursor-pointer">${plant.name} </button>
-                        <p id="card-p" class="text-[#4e5661] h-40">${plant.description}</p>
-                          <div class="flex justify-between">
-                        <div>
-                            <button id="card-catagori" class="bg-[#DCFCE7] text-[#15803D] font-semibold px-4 py-1 rounded-3xl">${plant.category}</button>
+                             <p id="card-p" class="text-[#4e5661] h-40">${plant.description}</p>
+                        <div class="flex justify-between">
+                            <div>
+                                <button id="card-catagori" class="bg-[#DCFCE7] text-[#15803D] font-semibold px-1 py-1 rounded-3xl">${plant.category}</button>
+                            </div>
+                            <div>
+                                <p id="card-price" class="text-[20px] font-bold">$ <span>${plant.price}</span> </p>
+                            </div>
                         </div>
-                        <div>
-                            <p id="card-price" class="text-[20px] font-bold">$ <span>${plant.price}</span> </p>
-                        </div>
-                    </div>
                     </div>
                   
                     <div class="">
