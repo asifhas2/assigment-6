@@ -146,17 +146,59 @@ curdContenar.append(curtdbtn)
 
 // chalange part //////////////////
 
+const bookmarks = []
+
 const cardSection = document.getElementById("card-section")
 
 cardSection.addEventListener('click',(e)=> {
     if(e.target.innerText === 'Add to Cart'){
-       const title = e.target.parentNode.parentNode.children[1].children[0].innerText;
-       const id = e.target.parentNode.parentNode.children[1].children[0].id
-       console.log(id)
+      handelBookMark(e)
     }
 })
 
+const handelBookMark = (e) =>{
+ const title = e.target.parentNode.parentNode.children[1].children[0].innerText;
+       const id = e.target.parentNode.parentNode.children[1].children[0].id
+       const money =  e.target.parentNode.parentNode.children[1].children[2].children[1].innerText
+       
+        bookmarks.push({
+            title : title,
+            id : id,
+            money : money
+        })
+       showBookMark(bookmarks)
+}
 
+const showBookMark = (bookmarks) =>{
+    const bookMarkContenar = document.getElementById("book-mark-contenar")
+    bookMarkContenar.innerHTML="";
+  for(let bookmark of bookmarks){
+     const bookMarkBtn = document.createElement("div")
+   bookMarkBtn.innerHTML=`
+      <div class="flex justify-between items-center bg-[#e0ffea] px-5 rounded-[7px] md:px-1 ">
+                        <div class="my-3">
+                            <p class="font-semibold text-[16px]">${bookmark.title}</p>
+                            <p class="text-gray-400"><span>${bookmark.money}</span></p>
+                        </div>
+                        <div>
+                            <i  onclick="handelDeleteBookMark('${bookmark.id}')" class="fa-solid fa-xmark text-gray-400 cursor-pointer md:max-w-fit"></i>
+                        </div>
+                    </div>
+   
+   `
+      bookMarkContenar.append(bookMarkBtn)
+  }
+
+}
+
+const handelDeleteBookMark = (bookmarkId) =>{
+ 
+const bookMarkFilter = bookmarks.filter
+(bookmark => bookmark.id !== bookmarkId)
+bookmarks=bookMarkFilter
+showBookMark(bookmarks)
+
+}
 
 catagorySection()
 allPlantSection()
