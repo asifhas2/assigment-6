@@ -200,6 +200,10 @@ showBookMark(bookmarks)
 
 }
 
+const showLoding = () =>{
+    
+}
+
 catagorySection()
 allPlantSection()
 lodeCurdSection()
